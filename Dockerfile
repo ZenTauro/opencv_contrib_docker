@@ -46,31 +46,31 @@ RUN git clone https://github.com/opencv/opencv_contrib.git \
     && cd ..
 
 RUN CC=clang CXX=clang++ cd /home/user/opencv/opencv \
-	&& cmake -Bbuild -GNinja \
-	  -DCMAKE_BUILD_TYPE=RELEASE \
-      -DCMAKE_EXE_LINKER_FLAGS='-fuse-ld=gold' \
-      -DOPENCV_EXTRA_MODULES_PATH=/home/user/opencv/opencv_contrib \
-	  -DCMAKE_INSTALL_PREFIX=/usr/local \
-	  -DENABLE_AVX=ON \
-      -DWITH_TBB=ON \
-	  -DWITH_OPENGL=ON \
-	  -DWITH_OPENCL=ON \
-      -DWITH_OPENMP=ON \
-	  -DWITH_IPP=ON \
-	  -DWITH_TBB=ON \
-	  -DWITH_EIGEN=ON \
-	  -DWITH_V4L=ON \
-      -DWITH_CSTRIPES=ON \
-	  -DBUILD_opencv_java=OFF \
-	  -DBUILD_TIFF=ON \
-	  -DBUILD_TESTS=OFF \
-      -DBUILD_DOCS=OFF \
-      -DBUILD_EXAMPLES=OFF \
-	  -DBUILD_PERF_TESTS=OFF
+        && cmake -Bbuild -GNinja \
+        -DCMAKE_BUILD_TYPE=RELEASE \
+        -DCMAKE_EXE_LINKER_FLAGS='-fuse-ld=gold' \
+        -DOPENCV_EXTRA_MODULES_PATH=/home/user/opencv/opencv_contrib \
+        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DENABLE_AVX=ON \
+        -DWITH_TBB=ON \
+        -DWITH_OPENGL=ON \
+        -DWITH_OPENCL=ON \
+        -DWITH_OPENMP=ON \
+        -DWITH_IPP=ON \
+        -DWITH_TBB=ON \
+        -DWITH_EIGEN=ON \
+        -DWITH_V4L=ON \
+        -DWITH_CSTRIPES=ON \
+        -DBUILD_opencv_java=OFF \
+        -DBUILD_TIFF=ON \
+        -DBUILD_TESTS=OFF \
+        -DBUILD_DOCS=OFF \
+        -DBUILD_EXAMPLES=OFF \
+        -DBUILD_PERF_TESTS=OFF
 
 RUN cd /home/user/opencv/opencv/build \
-	&& ninja install \
-    && cd /home/user/ \
-    && rm -r opencv \
-    && bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf' \
-    && ldconfig
+        && ninja install \
+        && cd /home/user/ \
+        && rm -r opencv \
+        && bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf' \
+        && ldconfig
