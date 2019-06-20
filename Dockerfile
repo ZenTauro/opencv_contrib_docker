@@ -46,7 +46,7 @@ RUN git clone https://github.com/opencv/opencv_contrib.git \
     && cd ..
 
 RUN CC=clang CXX=clang++ cd /home/user/opencv/opencv \
-        && cmake -Bbuild -GNinja \
+    && cmake -Bbuild -GNinja \
         -DCMAKE_BUILD_TYPE=RELEASE \
         -DCMAKE_EXE_LINKER_FLAGS='-fuse-ld=gold' \
         -DOPENCV_EXTRA_MODULES_PATH=/home/user/opencv/opencv_contrib \
@@ -69,8 +69,8 @@ RUN CC=clang CXX=clang++ cd /home/user/opencv/opencv \
         -DBUILD_PERF_TESTS=OFF
 
 RUN cd /home/user/opencv/opencv/build \
-        && ninja install \
-        && cd /home/user/ \
-        && rm -r opencv \
-        && bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf' \
-        && ldconfig
+    && ninja install \
+    && cd /home/user/ \
+    && rm -r opencv \
+    && bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf' \
+    && ldconfig
